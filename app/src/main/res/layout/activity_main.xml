@@ -4,15 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintLeft_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:id="@+id/txtMatrikelnr"
+        android:layout_width="336dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="450dp"
+        android:ems="10"
+        android:text=" Gib deine Matrikelnummer ein:"
+        android:textSize="24sp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTxtMatrikelnr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="450dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/txtMatrikelnr"
+        app:layout_constraintRight_toRightOf="@+id/txtMatrikelnr"
+        app:layout_constraintTop_toBottomOf="@+id/txtMatrikelnr" />
+
+    <Button
+        android:id="@+id/btnAbschicken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="380dp"
+        android:text="Abschicken"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/editTxtMatrikelnr"
+        app:layout_constraintRight_toRightOf="@+id/editTxtMatrikelnr"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtMatrikelnr" />
 
 </android.support.constraint.ConstraintLayout>
