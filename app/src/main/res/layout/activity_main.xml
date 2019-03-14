@@ -33,6 +33,7 @@
         android:layout_marginBottom="450dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@+id/txtMatrikelnr"
         app:layout_constraintRight_toRightOf="@+id/txtMatrikelnr"
@@ -42,12 +43,18 @@
         android:id="@+id/btnAbschicken"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="150dp"
         android:layout_marginBottom="380dp"
+        android:background="@color/colorPrimary"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:text="Abschicken"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="@+id/txtMatrikelnr"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@+id/txtMatrikelnr"
         app:layout_constraintTop_toBottomOf="@+id/editTxtMatrikelnr" />
 
@@ -55,13 +62,18 @@
         android:id="@+id/btnBerechnen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="380dp"
+        android:background="@color/colorPrimary"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:text="Berechnen"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/btnAbschicken"
-        app:layout_constraintRight_toRightOf="@+id/txtMatrikelnr"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTxtMatrikelnr"
         app:layout_constraintVertical_bias="0.529" />
 
@@ -95,6 +107,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/txtAntwort1"
         app:layout_constraintRight_toRightOf="@+id/txtAntwort1"
         app:layout_constraintTop_toBottomOf="@+id/txtAntwort1" />
+
 
 </android.support.constraint.ConstraintLayout>
 
