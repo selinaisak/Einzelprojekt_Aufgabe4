@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         editTxtMatrikelnr = findViewById(R.id.editTxtMatrikelnr);
-        editTxtMatrikelnr.setOnClickListener(new View.OnClickListener(){
+        editTxtMatrikelnr.setOnClickListener(new View.OnClickListener() {
             /**Wenn das Nummern-Eingabefeld angeklickt wird, soll die jeweilige Nachricht zu dieser Nummer unten verschwinden.**/
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 txtAntwort1.setVisibility(View.INVISIBLE);
                 txtAntwort2.setVisibility(View.INVISIBLE);
             }
@@ -41,6 +41,42 @@ public class MainActivity extends AppCompatActivity {
         txtAntwort1 = findViewById(R.id.txtAntwort1);
         txtAntwort2 = findViewById(R.id.txtAntwort2);
 
+        Button btnBerechnen = findViewById(R.id.btnBerechnen);
+        btnBerechnen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (editTxtMatrikelnr.getText().length() == 8) {
+                    char[] number = editTxtMatrikelnr.getText().toString().toCharArray();
+                    int result = calculateResult(number);
+                    txtAntwort1.setText("Alternierende Quersumme:");
+                    txtAntwort1.setVisibility(View.VISIBLE);
+                    txtAntwort1.setTextColor(normal);
+                    if(result%2 == 0){
+                        txtAntwort2.setText(result + "\n" + "Diese Zahl ist gerade.");
+                        txtAntwort2.setVisibility(View.VISIBLE);
+                        txtAntwort2.setTextColor(normal);
+                    }else{
+                        txtAntwort2.setText(result + "\n" + "Diese Zahl ist ungerade.");
+                        txtAntwort2.setVisibility(View.VISIBLE);
+                        txtAntwort2.setTextColor(normal);
+                    }
+                } else {
+                    /**Falls die eingegebene Nummer keine Matrikelnummer sein kann, soll eine Fehlermeldung ausgegeben werden.**/
+                    if (editTxtMatrikelnr.getText().toString().length() < 8) {
+                        txtAntwort2.setText("Die angegebene Matrikelnummer ist zu kurz!");
+
+                    } else if (editTxtMatrikelnr.getText().toString().length() > 8) {
+                        txtAntwort2.setText("Die angegebene Matrikelnummer ist zu lang!");
+                    }
+                    txtAntwort1.setTextColor(error);
+                    txtAntwort1.setText("Achtung:");
+                    txtAntwort1.setVisibility(View.VISIBLE);
+                    txtAntwort2.setTextColor(error);
+                    txtAntwort2.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
 
         Button btnAbschicken = findViewById(R.id.btnAbschicken);
         btnAbschicken.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +106,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    private int calculateResult(char[] number) {
+        int result = 0;
+        for (int i = 0; i < number.length; i++) {
+            if (i % 2 == 0) {
+                result += number[i];
+            } else {
+                result -= number[i];
+            }
+        }
+        return result;
+    }
+
+
 
     public class ServerRequestTask extends AsyncTask<Void, Void, String> {
         /**AsyncTask: Task, der nebenläufig ausgeführt wird
